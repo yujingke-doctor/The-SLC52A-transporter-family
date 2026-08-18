@@ -30,7 +30,7 @@ set3_colors <- brewer.pal(min(12, length(unique(combined$seurat_clusters))), "Se
 
 zm_colors <- colorRampPalette(brewer.pal(12, "Set3"))(35)
 
-# 3. 应用并保存
+# 应用并保存
 VlnPlot(combined, features = all_markers, 
         group.by = "seurat_clusters",
         stack = TRUE, #小提琴堆叠
@@ -42,7 +42,7 @@ VlnPlot(combined, features = all_markers,
 
 markers_list_mouse <- list(
   # T细胞系列
-  Tcell = c("Cd3e", "Cd3d", "Cd3g"),
+  Tcell = c("Cd3e", "Cd3d", "Cd3g", "Cd8a"),
   
   CD8Tcell = c("Cd8a", "Cd8b1", "Gzma", "Gzmb", "Gzmk", "Prf1", 
                "Ifng"),  # CXC13 → Cxcl13
@@ -53,11 +53,12 @@ markers_list_mouse <- list(
   
   Trm = c("Cd69", "Itgae", "Cxcr6"),
   
+  Tem <- c("Ccl5","Ccr5","Sell", "Il7r", "Ccr7", "Tcf7"),
   # NK细胞
   NKcell = c("Klrb1c", "Klrd1", "Nkg7", "Xcl1"),
   
   # B细胞系列
-  Bcell = c("Cd79a", "Cd79b", "Ighm", "Ighd"),  # 修正：Iglc2不是典型B细胞marker
+  Bcell = c("Cd79a", "Cd79b", "Ms4a1"),  
   
   plasma = c("Mzb1", "Jchain", "Igha", "Ighg1", "Sdc1"),  # IGHA1 → Igha, IGHG1 → Ighg1
   
@@ -69,7 +70,7 @@ markers_list_mouse <- list(
   Basophil = c("Cpa3", "Gata2", "Ms4a2", "Mcpt8"),
   
   # 树突状细胞
-  cDC = c("Clec9a", "Clec10a", "Cd209a"),
+  cDC = c("Clec9a", "Clec10a", "Cd209a","Cd74","Cd83"),
   
   MigratorycDC = c( "Ccl22", "Fscn1"),
   
@@ -219,27 +220,27 @@ ExportToCellbrowser(combined,
 # 在浏览器中打开
 cbBuild("cellbrowser")
 
-####快速筛查流程建议：####
-# 1. 先用点图看整体模式
+####9.快速筛查流程建议：####
+# 9.1. 先用点图看整体模式
 p1 <- DotPlot(combined, features = unlist(markers_list),
               group.by = "seurat_clusters")
 print(p1)
 
-# 2. 查看疑似淋巴细胞的cluster（T/NK/B）
+# 9.2. 查看疑似淋巴细胞的cluster（T/NK/B）
 immune_clusters <- c()  # 根据点图确定
 if(length(immune_clusters) > 0) {
   VlnPlot(combined, features = c("Cd3e", "Cd3d", "Nkg7", "Cd79a"),
           idents = immune_clusters)
 }
 
-# 3. 查看疑似髓系细胞的cluster
+# 9.3. 查看疑似髓系细胞的cluster
 myeloid_clusters <- c()  # 根据点图确定
 if(length(myeloid_clusters) > 0) {
   VlnPlot(combined, features = c("Fcer1g", "Tyrobp", "S100a8", "Clec9a"),
           idents = myeloid_clusters)
 }
 
-# 4. 查看成纤维细胞
+# 9.4. 查看成纤维细胞
 VlnPlot(combined, features = c("Col1a1", "Dcn"),
         group.by = "seurat_clusters")
 
