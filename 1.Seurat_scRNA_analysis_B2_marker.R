@@ -53,7 +53,7 @@ markers_list_mouse <- list(
   
   Trm = c("Cd69", "Itgae", "Cxcr6"),
   
-  Tem <- c("Ccl5","Ccr5","Sell", "Il7r", "Ccr7", "Tcf7"),
+  Tem = c("Ccl5","Ccr5","Sell", "Il7r", "Ccr7", "Tcf7"),
   # NK细胞
   NKcell = c("Klrb1c", "Klrd1", "Nkg7", "Xcl1"),
   
