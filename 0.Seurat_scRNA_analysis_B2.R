@@ -337,7 +337,7 @@ ggsave("umaptree_umap_harmony.png", plot =P2, width = 24, height = 18, dpi = 300
 # combined <- FindClusters(combined, resolution = 0.5)
 Idents(combined) <- "RNA_snn_res.0.5"
 
-# 4.4. 检查分群质量
+# 5.4. 检查分群质量
 DimPlot(combined, reduction = "umap_harmony", label = TRUE)
 
 
