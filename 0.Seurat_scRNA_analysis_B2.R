@@ -244,7 +244,7 @@ FeaturePlot(seu, features = "ambient_frac_decontx",
                          limits = c(0, 0.5))
 
 
-# 4.对整个数据集进行重新预处理和聚类 ----
+# 5.对整个数据集进行重新预处理和聚类 ----
 cat("\n对整个数据集进行预处理...\n")
 
 # 质量过滤（再次确保）
@@ -288,7 +288,7 @@ combined <- RunUMAP(combined, dims = 1:30, reduction = "harmony", reduction.name
 
 # 设置默认分辨率
 
-# 4.1. 计算多分辨率
+# 5.1. 计算多分辨率
 resolutions <- seq(0.5, 2.0, by = 0.1)
 for (res in resolutions) {
   combined <- FindClusters(combined, 
@@ -296,7 +296,7 @@ for (res in resolutions) {
                            cluster.name = paste0("RNA_snn_res.", res))
 }
 
-# 4.2. 使用 clustree 可视化
+# 5.2. 使用 clustree 可视化
 library(clustree)
 p=clustree(combined, prefix = "RNA_snn_res.")
 ggsave("clustree.png", plot = p, width = 20, height = 18, dpi = 300)
@@ -332,7 +332,7 @@ P2=wrap_plots(plot_list, ncol = 4)
 ggsave("umaptree_umap_harmony.png", plot =P2, width = 24, height = 18, dpi = 300)
 
 
-# 4.3. 选一个最合理的作为最终聚类
+# 5.3. 选一个最合理的作为最终聚类
 # 假设你决定用 res = 0.5
 # combined <- FindClusters(combined, resolution = 0.5)
 Idents(combined) <- "RNA_snn_res.0.5"
@@ -361,7 +361,7 @@ VlnPlot(combined, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"),
   NoLegend()
 ggsave("QC_metrics_by_sample.pdf", width = 12, height = 6)
 
-# 5.寻找所有marker基因 ----
+# 6.寻找所有marker基因 ----
 cat("\n寻找差异表达基因...\n")
 # 合并数据层
 
@@ -393,8 +393,8 @@ combined_markers <- FindAllMarkers(
 
 
 # 保存marker基因
-write.csv(combined_markers , "combined_markers_res1.csv", row.names = FALSE)
-cat("Marker基因已保存到 combined_markers_res1.csv\n")
+write.csv(combined_markers , "combined_markers_res.csv", row.names = FALSE)
+cat("Marker基因已保存到 combined_markers_res.csv\n")
 
 # 保存完整的Seurat对象
 saveRDS(combined, file = "combined_anno.rds")
