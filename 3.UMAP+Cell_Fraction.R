@@ -128,7 +128,7 @@ ggsave(p1, file = "Fig6SA-scRNA_UMAP.pdf", width = 6, height = 6)
 
 # ---- Figure 1C (left) - Barplot of cell counts per lineage ----
 p2 <- combined@meta.data %>% 
-  ggplot(aes(y = forcats::fct_rev(forcats::fct_infreq(cluster_anno_l1)), 
+  ggplot(aes(y = forcats::fct_rev(forcats::fct_infreq(cluster_anno)), 
              fill = cluster_anno_l1)) + 
   geom_bar(stat = 'count') +
   labs(x = 'Cell count', y = NULL) +
@@ -141,7 +141,7 @@ p2 <- combined@meta.data %>%
   theme(axis.text = element_text(size = 16, color = 'black')) 
 
 # ---- Figure 1C (right) - Sample composition barplot ----
-cell_counts <- as.data.frame(table(combined$cluster_anno_l1, combined$orig.ident))
+cell_counts <- as.data.frame(table(combined$cluster_anno, combined$orig.ident))
 
 p3 <- ggplot(data = cell_counts, 
              aes(x = forcats::fct_rev(Var2), y = Freq, fill = Var1)) +
@@ -149,8 +149,7 @@ p3 <- ggplot(data = cell_counts,
   coord_flip() +
   labs(x = NULL, y = 'Cell Lineage Frequency') + 
   scale_x_discrete(labels = c("Sample1", "Sample2", "Sample3", "Sample4", 
-                              "Sample5", "Sample6", "Sample7", "Sample8",
-                              "Sample9", "Sample10", "Sample11", "Sample12")) +
+                              "Sample5", "Sample6", "Sample7", "Sample8")) +
   scale_fill_manual(
     name = "Cell lineage", 
     values = lineage_colors
