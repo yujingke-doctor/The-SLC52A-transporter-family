@@ -129,7 +129,7 @@ ggsave(p1, file = "Fig6SA-scRNA_UMAP.pdf", width = 6, height = 6)
 # ---- Figure 1C (left) - Barplot of cell counts per lineage ----
 p2 <- combined@meta.data %>% 
   ggplot(aes(y = forcats::fct_rev(forcats::fct_infreq(cluster_anno)), 
-             fill = cluster_anno_l1)) + 
+             fill = cluster_anno)) + 
   geom_bar(stat = 'count') +
   labs(x = 'Cell count', y = NULL) +
   scale_fill_manual(

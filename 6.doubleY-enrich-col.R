@@ -58,9 +58,9 @@ p4 <- p3+
   annotate('text',x=15.4,y=70,label='-Log10(P value)',
            fontface='bold',size=5)
 p4
-ggsave("FigS3L-双轴富集分析-enrih-bar+自加次轴坐标.png", width = 9, height = 7, dpi = 600)
-ggsave("FigS3L-双轴富集分析-enrih-bar+自加次轴坐标.pdf", width = 9, height = 7)
-ggsave("FigS3L-双轴富集分析-enrih-bar+自加次轴坐标.tiff", width = 9, height = 7, dpi = 600)
+ggsave("FigS4I-双轴富集分析-enrih-bar+自加次轴坐标.png", width = 9, height = 7, dpi = 600)
+ggsave("FigS4I-双轴富集分析-enrih-bar+自加次轴坐标.pdf", width = 9, height = 7)
+ggsave("FigS4I-双轴富集分析-enrih-bar+自加次轴坐标.tiff", width = 9, height = 7, dpi = 600)
 
 
 #####加-Log10(P value)名字#####
@@ -100,6 +100,6 @@ p4 <- p3+
   annotate('text',x=15.4,y=70,label='-Log10(P value)',
            fontface='bold',size=5)
 p4
-ggsave("FigS3L-双轴富集分析-enrih-bar.png", width = 9, height = 7, dpi = 600)
-ggsave("FigS3L-双轴富集分析-enrih-bar.pdf", width = 9, height = 7)
-ggsave("FigS3L-双轴富集分析-enrih-bar.tiff", width = 9, height = 7, dpi = 600)
+ggsave("FigS4I-双轴富集分析-enrih-bar.png", width = 9, height = 7, dpi = 600)
+ggsave("FigS4I-双轴富集分析-enrih-bar.pdf", width = 9, height = 7)
+ggsave("FigS4I-双轴富集分析-enrih-bar.tiff", width = 9, height = 7, dpi = 600)

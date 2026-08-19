@@ -436,17 +436,17 @@ draw_circos_heatmap <- function() {
 }
 
 # 保存为 PDF
-pdf("circos_heatmap.pdf", width = 10, height = 10)
+pdf("Fig3N-circos_heatmap.pdf", width = 10, height = 10)
 draw_circos_heatmap()
 dev.off()
 
 # 保存为 PNG
-png("circos_heatmap.png", width = 10, height = 10, units = "in", res = 300)
+png("Fig3N-circos_heatmap.png", width = 10, height = 10, units = "in", res = 300)
 draw_circos_heatmap()
 dev.off()
 
 # 保存为 TIFF
-tiff("circos_heatmap.tiff", width = 10, height = 10, units = "in", res = 300, compression = "lzw")
+tiff("Fig3N-circos_heatmap.tiff", width = 10, height = 10, units = "in", res = 300, compression = "lzw")
 draw_circos_heatmap()
 dev.off()
 
